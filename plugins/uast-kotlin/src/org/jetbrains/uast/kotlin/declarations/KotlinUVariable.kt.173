@@ -418,7 +418,7 @@ class KotlinUEnumConstant(
     }
 
     override val returnType: PsiType?
-        get() = psi.type
+        get() = (uastParent?.javaPsi as? PsiClass)?.let { PsiTypesUtil.getClassType(it) }
 
     override fun resolve() = psi.resolveMethod()
 
